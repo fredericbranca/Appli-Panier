@@ -11,7 +11,7 @@
 <body>
 
     <h1>Ajouter un produit</h1>
-    <form action="traitement.php" method="post">
+    <form action="Traitement.php" method="post">
         <p>
             <label>
                 Nom du produit :
