@@ -10,4 +10,5 @@ if (isset($_POST['submit'])) {
     $qtt = filter_input(INPUT_POST, "qtt", FILTER_VALIDATE_INT); //ne validera la quantité que si celle-ci est un nombre entier différent de zéro (qui est considéré comme nul)
 }
 
+
 header("Location:index.php");
