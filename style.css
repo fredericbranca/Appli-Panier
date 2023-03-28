@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+  div.session{
+    position:absolute;
+    right:35px;
+  }
+
+  .fa-cart-shopping {
+    font-size: 40px;
+    color: black;
+  }
+
+  .position-relative {
+    background-color: rgba(0, 0, 0, 0) !important;
+    border-color: rgba(0, 0, 0, 0)!important;
+  }
+
+  .position-relative:hover {
+    background-color: rgba(0, 0, 0, 0) !important;
+    border-color: rgba(0, 0, 0, 0)!important;
+  }
+
+  .position-relative:active {
+    background-color: rgba(0, 0, 0, 0) !important;
+    border-color: rgba(0, 0, 0, 0)!important;
+  }
