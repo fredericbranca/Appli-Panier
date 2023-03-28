@@ -1,6 +1,7 @@
 <?php
 
-session_start();
+require "functions.php";
+
 
 if (isset($_POST['submit'])) {
     $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS); // empèche injection de SQL ou de HTML, supprime toutes les balises
