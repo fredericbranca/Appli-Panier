@@ -1,5 +1,6 @@
 <?php
 require "functions.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +46,7 @@ require "functions.php";
 
 <body>
 
-    <form action="Traitement.php" method="post">
+    <form action="Traitement.php?action=add" method="post">
         <div class="ms-3">
             <p class="fs-2">Ajouter un produit</p>
             <div class="col-md-4">
@@ -69,7 +70,7 @@ require "functions.php";
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-text" id="inputGroupPrepend">Quantité désirée</span>
-                    <input type="number" step="0.01" name="qtt" value="1" class="form-control" aria-describedby="inputGroupPrepend">
+                    <input type="number" step="1" name="qtt" value="1" class="form-control" aria-describedby="inputGroupPrepend">
                 </div>
             </div>
             </p>
@@ -90,6 +91,7 @@ require "functions.php";
                     }
                 ?>
             </p>
+
 
         </div>
     </form>
