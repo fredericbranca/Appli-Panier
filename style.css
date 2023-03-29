@@ -14,6 +14,10 @@ body {
   overflow: hidden;
 }
 
+button {
+  border:none;
+}
+
 .bg-light {
   padding-bottom: 20px;
   
@@ -54,6 +58,14 @@ div.session {
 .fa-cart-shopping {
   font-size: 40px;
   color: black;
+}
+
+.fa-square-xmark:hover {
+  color:red;
+}
+
+.fa-square-xmark:active {
+  font-size: 15px;
 }
 
 .navbar-brand {

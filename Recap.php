@@ -45,6 +45,7 @@ require "functions.php";
 </header>
 
 <body>
+
     <?php 
     // session_destroy();
         if(!isset($_SESSION['products']) || empty($_SESSION['products'])) 
@@ -54,7 +55,7 @@ require "functions.php";
         else 
         {
             echo "<div class='ms-3'><p class='fs-2'>Récapitulatif du panier</p></div>",
-                "<table  class='table table-striped table-hover'>",
+                "<table  class='table table-hover'>",
                     "<thead>",
                         "<tr>",
                             "<th>#</th>",
@@ -68,23 +69,28 @@ require "functions.php";
 
             $totalGeneral = 0;
 
-            foreach($_SESSION['products'] as $index => $product)
+            foreach($_SESSION['products'] as $key => $product)
             {
+                $totalGeneral += $product['total'];
                 echo "<tr>",
-                        "<td>".$index."</td>",
+                        "<td>".$key."</td>",
                         "<td>".$product['name']."</td>",
                         "<td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                         "<td>".$product['qtt']."</td>",
                         "<td>".number_format($product['total'], 2, ",", "&nbsp;")."&nbsp;€</td>",
-                    "</tr>";
-                
-                $totalGeneral += $product['total'];
+                        "<td><button type='remove' name='remove'><i class='fa-sharp fa-solid fa-square-xmark'></i></button></td>";
+                echo "</tr>";
+
+                // if (isset($_POST['remove'])) {
+                //         unset($_SESSION['products'][$key]);
+                // }
 
             }
 
             echo    "<tr>",
                         "<td colspan=4>Total général : </td>",
                         "<td><strong>".number_format($totalGeneral, 2, ",", "&nbsp;"). "&nbsp;€</strong></td>",
+                        "<td><a href='Traitement.php?action=clear'><i class='fa-sharp fa-solid fa-square-xmark'></i></a></td>",
                     "</tr>",
                  "</tbody>",
                 "</table>";
@@ -92,6 +98,7 @@ require "functions.php";
         }
     
     ?>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
         <!-- curseur -->
