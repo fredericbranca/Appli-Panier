@@ -1,5 +1,6 @@
 <?php
 require "functions.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,6 +80,14 @@ require "functions.php";
                 <button class="btn btn-primary" name="submit" type="submit">Ajouter le produit</button>
             </div>
             </p>
+
+            <p> <?php 
+                    if(isset($_GET['Message'])){
+                    echo $_GET['Message'];
+                    }
+                ?>
+            </p>
+
         </div>
     </form>
 

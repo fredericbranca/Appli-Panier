@@ -2,7 +2,6 @@
 
 require "functions.php";
 
-
 if (isset($_POST['submit'])) {
     $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS); // empèche injection de SQL ou de HTML, supprime toutes les balises
 
@@ -15,6 +14,16 @@ if (isset($_POST['submit'])) {
         $product = ["name" => $name, "price" => $price, "qtt" => $qtt, "total" => $price*$qtt];
     
         $_SESSION['products'][] = $product;
+
+        $message = urlencode("<div class='green'>Produit ajouté au panier avec succès </div>");
+        header("Location:index.php?Message=$message");
+        die;
+    }
+    else
+    {
+        $message = urlencode("<div class='red'>Le produit n'a pas été ajouté au panier </div>");
+        header("Location:index.php?Message=$message");
+        die;
     }
 }
 

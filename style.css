@@ -83,3 +83,11 @@ div.session {
 width: 50%;
 margin: 1%;
 }
+
+.green {
+  color:green;
+}
+
+.red {
+  color: red;
+}
