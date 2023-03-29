@@ -4,14 +4,14 @@
 
     function sumQtt()
     {
-        $qt=0;
+        $qtt=0;
         if (empty($_SESSION['products'])){
             return 0;
         }
         else{
-            foreach($_SESSION['products'] as $s){
-                $qt += $s["qtt"];
+            foreach($_SESSION['products'] as $products){
+                $qtt += $products["qtt"];
             }
-            return $qt;
+            return $qtt;
             }
     }
