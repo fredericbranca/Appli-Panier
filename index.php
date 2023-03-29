@@ -45,49 +45,6 @@ require "functions.php";
 
 <body>
 
-    <!-- <div id="cursor"></div> -->
-    <div id="circle" class="circle"></div>
-    <script type="text/javascript" src="kinet.min.js"></script>
-    <script type="text/javascript">
-        // var cursor = document.getElementById('cursor');
-        // document.addEventListener('mousemove', function(e){
-        //     var x = e.clientX;
-        //     var y = e.clientY;
-        //     cursor.style.left = x + "px";
-        //     cursor.style.top = y + "px";
-        // });
-
-        // create instance of kinet with custom settings
-        var kinet = new Kinet({
-            acceleration: 0.03,
-            friction: 0.2,
-            names: ["x", "y"],
-        });
-
-        // select circle element
-        var circle = document.getElementById('circle');
-
-        // set handler on kinet tick event
-        kinet.on('tick', function(instances) {
-            circle.style.transform = `translate3d(${ (instances.x.current) }px, ${ (instances.y.current) }px, 0) rotateX(${ (instances.x.velocity/2) }deg) rotateY(${ (instances.y.velocity/2) }deg)`;
-        });
-
-        // call kinet animate method on mousemove
-        document.addEventListener('mousemove', function(event) {
-            kinet.animate('x', event.clientX - window.innerWidth / 2);
-            kinet.animate('y', event.clientY - window.innerHeight / 2);
-        });
-
-        // log
-        kinet.on('start', function() {
-            console.log('start');
-        });
-
-        kinet.on('end', function() {
-            console.log('end');
-        });
-    </script>
-
     <form action="Traitement.php" method="post">
         <div class="ms-3">
             <p class="fs-2">Ajouter un produit</p>
@@ -126,6 +83,13 @@ require "functions.php";
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+
+    <!-- curseur -->
+        <!-- <div id="cursor"></div> -->
+        <div id="circle" class="circle"></div>
+        <script type="text/javascript" src="kinet.min.js"></script>
+        <script type="text/javascript" src="cursor.js"></script>
 
 </body>
 
