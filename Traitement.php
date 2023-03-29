@@ -15,15 +15,11 @@ if (isset($_POST['submit'])) {
     
         $_SESSION['products'][] = $product;
 
-        $message = urlencode("<div class='green'>Produit ajouté au panier avec succès </div>");
-        header("Location:index.php?Message=$message");
-        die;
+        $_SESSION['Message']['succes'] = "<div class='green'>Produit ajouté au panier avec succès </div>";
     }
     else
     {
-        $message = urlencode("<div class='red'>Le produit n'a pas été ajouté au panier </div>");
-        header("Location:index.php?Message=$message");
-        die;
+        $_SESSION['Message']['erreur'] = "<div class='red'>Le produit n'a pas été ajouté au panier </div>";
     }
 }
 

@@ -1,6 +1,5 @@
 <?php
 require "functions.php";
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,8 +81,12 @@ require "functions.php";
             </p>
 
             <p> <?php 
-                    if(isset($_GET['Message'])){
-                    echo $_GET['Message'];
+                    if(isset($_SESSION['Message'])){
+                        foreach($_SESSION['Message'] as $type => $message)
+                        {
+                        echo $message;
+                        }
+                        unset($_SESSION['Message']);
                     }
                 ?>
             </p>
