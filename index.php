@@ -15,35 +15,78 @@ require "functions.php";
     <title>Ajout produit</title>
 </head>
 <header>
-<nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/Fred">Localhost</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Recap.php">Récapitulatif</a>
-                </li>
-                <li class="nav-item">
-                    <div class="session">
-                        <div class="btn btn-primary position-relative">
-                            <i class="fa-solid fa-cart-shopping"></i>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="http://localhost/">Localhost</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Recap.php">Récapitulatif</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="session">
+                            <div class="btn btn-primary position-relative">
+                                <i class="fa-solid fa-cart-shopping"></i>
 
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                <?php echo sumQtt() ?>
-                            </span>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    <?php echo sumQtt() ?>
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 </header>
+
 <body>
 
+    <!-- <div id="cursor"></div> -->
+    <div id="circle" class="circle"></div>
+    <script type="text/javascript" src="kinet.min.js"></script>
+    <script type="text/javascript">
+        // var cursor = document.getElementById('cursor');
+        // document.addEventListener('mousemove', function(e){
+        //     var x = e.clientX;
+        //     var y = e.clientY;
+        //     cursor.style.left = x + "px";
+        //     cursor.style.top = y + "px";
+        // });
+
+        // create instance of kinet with custom settings
+        var kinet = new Kinet({
+            acceleration: 0.03,
+            friction: 0.2,
+            names: ["x", "y"],
+        });
+
+        // select circle element
+        var circle = document.getElementById('circle');
+
+        // set handler on kinet tick event
+        kinet.on('tick', function(instances) {
+            circle.style.transform = `translate3d(${ (instances.x.current) }px, ${ (instances.y.current) }px, 0) rotateX(${ (instances.x.velocity/2) }deg) rotateY(${ (instances.y.velocity/2) }deg)`;
+        });
+
+        // call kinet animate method on mousemove
+        document.addEventListener('mousemove', function(event) {
+            kinet.animate('x', event.clientX - window.innerWidth / 2);
+            kinet.animate('y', event.clientY - window.innerHeight / 2);
+        });
+
+        // log
+        kinet.on('start', function() {
+            console.log('start');
+        });
+
+        kinet.on('end', function() {
+            console.log('end');
+        });
+    </script>
 
     <form action="Traitement.php" method="post">
         <div class="ms-3">

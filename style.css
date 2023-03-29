@@ -4,27 +4,82 @@
   box-sizing: border-box;
 }
 
-  div.session{
-    position:absolute;
-    right:35px;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  /* display: flex; */
+  /* justify-content: center;
+  align-items: center; */
+  height: 100vh;
+  overflow: hidden;
+}
 
-  .fa-cart-shopping {
-    font-size: 40px;
-    color: black;
-  }
+.bg-light {
+  padding-bottom: 20px;
+  
+}
 
-  .position-relative {
-    background-color: rgba(0, 0, 0, 0) !important;
-    border-color: rgba(0, 0, 0, 0)!important;
-  }
+#cursor {
+  position:absolute;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  transition: 0,1s;
+  transform: translateX(-50%) translateY(-50%) translateZ(0px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10;
+}
 
-  .position-relative:hover {
-    background-color: rgba(0, 0, 0, 0) !important;
-    border-color: rgba(0, 0, 0, 0)!important;
-  }
+.circle {
+  width: 25px;
+  height: 25px;
+  border: 2px solid hsl(0, 0%, 0%);
+  border-radius: 50%;
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%) translateZ(0px);
+  top: 50%;
+  left: 50%;
+  margin: -12px 0 0 -11px;
+  pointer-events: none;
+  z-index: 10;
+}
 
-  .position-relative:active {
-    background-color: rgba(0, 0, 0, 0) !important;
-    border-color: rgba(0, 0, 0, 0)!important;
-  }
+div.session {
+  position: absolute;
+  right: 35px;
+}
+
+.fa-cart-shopping {
+  font-size: 40px;
+  color: black;
+}
+
+.navbar-brand {
+  margin-top: 6px;
+}
+.nav-item {
+  margin-top: 10px;
+}
+
+.position-relative {
+  background-color: rgba(0, 0, 0, 0) !important;
+  border-color: rgba(0, 0, 0, 0) !important;
+}
+
+.position-relative:hover {
+  background-color: rgba(0, 0, 0, 0) !important;
+  border-color: rgba(0, 0, 0, 0) !important;
+}
+
+.position-relative:active {
+  background-color: rgba(0, 0, 0, 0) !important;
+  border-color: rgba(0, 0, 0, 0) !important;
+}
+
+.table-hover
+{
+width: 50%;
+margin: 1%;
+}

@@ -16,32 +16,34 @@ require "functions.php";
 
 </head>
 
-<nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="\">Localhost</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Recap.php">Récapitulatif</a>
-                </li>
-                <li class="nav-item">
-                    <div class="session">
-                        <div class="btn btn-primary position-relative">
-                            <i class="fa-solid fa-cart-shopping"></i>
+<header>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+        <a class="navbar-brand" href="http://localhost/">Localhost</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.php">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Recap.php">Récapitulatif</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="session">
+                            <div class="btn btn-primary position-relative">
+                                <i class="fa-solid fa-cart-shopping"></i>
 
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                <?php echo sumQtt() ?>
-                            </span>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    <?php echo sumQtt() ?>
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</header>
 
 <body>
     <?php 
@@ -52,7 +54,8 @@ require "functions.php";
         }
         else 
         {
-            echo "<table  class='table'>",
+            echo "<div class='ms-3'><p class='fs-2'>Récapitulatif du panier</p></div>",
+                "<table  class='table table-striped table-hover'>",
                     "<thead>",
                         "<tr>",
                             "<th>#</th>",
