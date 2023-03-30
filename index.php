@@ -60,7 +60,7 @@ require "functions.php";
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-text" id="inputGroupPrepend">Prix du produit&nbsp;&nbsp;</span>
-                    <input type="number" step="0.01" name="price" class="form-control" aria-describedby="inputGroupPrepend">
+                    <input type="number" min="0.01" step="0.01" name="price" class="form-control" aria-describedby="inputGroupPrepend">
                     <span class="input-group-text" id="basic-addon1">€</span>
                 </div>
             </div>
@@ -70,7 +70,7 @@ require "functions.php";
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-text" id="inputGroupPrepend">Quantité désirée</span>
-                    <input type="number" step="1" name="qtt" value="1" class="form-control" aria-describedby="inputGroupPrepend">
+                    <input type="number" min="1" step="1" name="qtt" value="1" class="form-control" aria-describedby="inputGroupPrepend">
                 </div>
             </div>
             </p>
@@ -83,10 +83,7 @@ require "functions.php";
 
             <p> <?php 
                     if(isset($_SESSION['Message'])){
-                        foreach($_SESSION['Message'] as $type => $message)
-                        {
-                        echo $message;
-                        }
+                        echo $_SESSION['Message'];
                         unset($_SESSION['Message']);
                     }
                 ?>
@@ -100,7 +97,6 @@ require "functions.php";
 
 
     <!-- curseur -->
-        <!-- <div id="cursor"></div> -->
         <div id="circle" class="circle"></div>
         <script type="text/javascript" src="kinet.min.js"></script>
         <script type="text/javascript" src="cursor.js"></script>

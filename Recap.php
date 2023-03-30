@@ -16,22 +16,26 @@ require "functions.php";
 </head>
 
 <header>
+    <!-- barre de navigation -->
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
+        <!-- Redirection localhost -->
         <a class="navbar-brand" href="http://localhost/">Localhost</a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Accueil -->
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="index.php">Accueil</a>
                     </li>
+                    <!-- Récapitulatif -->
                     <li class="nav-item">
                         <a class="nav-link active" href="Recap.php">Récapitulatif</a>
                     </li>
+                    <!-- panier + quantité -->
                     <li class="nav-item">
                         <div class="session">
                             <div class="btn btn-primary position-relative">
                                 <i class="fa-solid fa-cart-shopping"></i>
-
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                     <?php echo sumQtt() ?>
                                 </span>
@@ -45,16 +49,28 @@ require "functions.php";
 </header>
 
 <body>
+    
+        <?php 
+        // session_destroy(); //permet de supprimer la session en cours
 
-    <?php 
-    // session_destroy();
-        if(!isset($_SESSION['products']) || empty($_SESSION['products'])) 
-        {
-            echo "<p class='ms-3' class='fs-6'>Aucun produit en session...</p>";
+        // S'il n'a pas de message en session et qu'il n'y a pas de produit :
+        if(isset($_SESSION['Message']) && empty($_SESSION['products'])){
+            echo "<p class='fs-2 ms-3'>Récapitulatif du panier</p>";
+            //affiche que le panier a été vidé
+            echo $_SESSION['Message'];
+            unset($_SESSION['Message']);
         }
+        //sinon si le tableau de produit est vide
+        elseif(!isset($_SESSION['products']) || empty($_SESSION['products'])) 
+        {
+            //affiche que le panier est vide
+            echo "<p class='fs-2 ms-3'>Récapitulatif du panier</p>";
+            echo "<p class='ms-3 fs-6'>Le panier est vide...</p>";
+        }
+        //sinon (le tableau de produit n'est pas vide)
         else 
         {
-            echo "<div class='ms-3'><p class='fs-2'>Récapitulatif du panier</p></div>",
+            echo "<p class='fs-2 ms-3'>Récapitulatif du panier</p>",
                 "<table  class='table table-hover'>",
                     "<thead>",
                         "<tr>",
@@ -69,22 +85,21 @@ require "functions.php";
 
             $totalGeneral = 0;
 
-            foreach($_SESSION['products'] as $key => $product)
+            foreach($_SESSION['products'] as $key => $produit)
             {
-                $totalGeneral += $product['total'];
+                $total = $produit['price'] * $produit['qtt'];
                 echo "<tr>",
-                        "<td>".$key."</td>",
-                        "<td>".$product['name']."</td>",
-                        "<td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
-                        "<td>".$product['qtt']."</td>",
-                        "<td>".number_format($product['total'], 2, ",", "&nbsp;")."&nbsp;€</td>",
-                        "<td><button type='remove' name='remove'><i class='fa-sharp fa-solid fa-square-xmark'></i></button></td>";
+                        "<td>".($key+1)."</td>",
+                        "<td>".$produit['name']."</td>",
+                        "<td>".number_format($produit['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
+                        "<td>".$produit['qtt']. "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp",
+                        "<a href='Traitement.php?action=up-qtt&id=$key'><i class='fa-sharp fa-solid fa-plus'></i></a>&nbsp&nbsp",
+                        "<a href='Traitement.php?action=down-qtt&id=$key'><i class='fa-sharp fa-solid fa-minus'></i></a></td>",
+
+                        "<td>".number_format($total, 2, ",", "&nbsp;")."&nbsp;€</td>",
+                        "<td><a href='Traitement.php?action=delete&id=$key'><i class='fa-sharp fa-solid fa-square-xmark'></i></a></td>";
                 echo "</tr>";
-
-                // if (isset($_POST['remove'])) {
-                //         unset($_SESSION['products'][$key]);
-                // }
-
+                $totalGeneral += $total;
             }
 
             echo    "<tr>",
@@ -95,6 +110,10 @@ require "functions.php";
                  "</tbody>",
                 "</table>";
 
+            if(isset($_SESSION['Message'])){
+                echo $_SESSION['Message'];
+                unset($_SESSION['Message']);
+            }
         }
     
     ?>
@@ -102,7 +121,6 @@ require "functions.php";
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
         <!-- curseur -->
-            <!-- <div id="cursor"></div> -->
             <div id="circle" class="circle"></div>
             <script type="text/javascript" src="kinet.min.js"></script>
             <script type="text/javascript" src="cursor.js"></script>
