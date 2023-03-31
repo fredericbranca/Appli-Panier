@@ -47,7 +47,7 @@ if (isset($_GET['action'])) {
             unset($_SESSION['products']);
 
             // afficher le message de confirmation du panier vidé
-            $_SESSION['Message'] = "<div class='alert alert-success' style='width:10%; text-align:center; margin:2%' role='alert'>Le panier a été vidé !</div>";
+            $_SESSION['Message'] = "<div class='alert alert-warning' style='width:10%; text-align:center; margin:2%' role='alert'>Le panier a été vidé !</div>";
 
             // redirection
             header("Location: Recap.php");
