@@ -47,8 +47,8 @@ require "functions.php";
 <body>
 
     <form action="Traitement.php?action=add" method="post">
-        <div class="ms-3">
-            <p class="fs-2">Ajouter un produit</p>
+        <div class="ms-3 shadow p-3 mb-5 bg-body rounded">
+            <p class="fs-2 shadow-sm p-3 mb-5 bg-body rounded">Ajouter un produit</p>
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-text" id="inputGroupPrepend">Nom du produit</span>
@@ -91,6 +91,7 @@ require "functions.php";
 
 
         </div>
+    </div>
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

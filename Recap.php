@@ -70,8 +70,8 @@ require "functions.php";
         //sinon (le tableau de produit n'est pas vide)
         else 
         {
-            echo "<p class='fs-2 ms-3'>Récapitulatif du panier</p>",
-                "<table  class='table table-hover'>",
+            echo "<p class='fs-2 ms-3 shadow-sm p-3 mb-5 bg-body rounded'>Récapitulatif du panier</p>",
+                "<table  class='table table-hover shadow-sm p-3 mb-5 bg-body rounded'>",
                     "<thead>",
                         "<tr>",
                             "<th>#</th>",
@@ -79,6 +79,7 @@ require "functions.php";
                             "<th>Prix</th>",
                             "<th>Quantité</th>",
                             "<th>Total</th>",
+                            "<th></th>",
                         "</tr>",
                     "</thead>",
                     "<tbody>";
