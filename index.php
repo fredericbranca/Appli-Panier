@@ -30,11 +30,11 @@ require "functions.php";
                     <li class="nav-item">
                         <div class="session">
                             <div class="btn btn-primary position-relative">
-                                <i class="fa-solid fa-cart-shopping"></i>
-
+                                <a href="Recap.php"><i class="fa-solid fa-cart-shopping"></i></a>
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                     <?php echo sumQtt() ?>
                                 </span>
+                                
                             </div>
                         </div>
                     </li>
