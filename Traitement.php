@@ -58,14 +58,15 @@ if (isset($_GET['action'])) {
         case "delete":
 
             // supprime le produit assoscié à l'id qui lui est attribué grâce à la method GET de l'URL
+            $deletedProduct = $_SESSION['products'][$_GET['id']]['name'];
             unset($_SESSION['products'][$_GET['id']]);
 
             // mise en forme pour l'affichage : afficher le message de suppression du produit
             if(!empty($_SESSION['products'])){
-                $_SESSION['Message'] = "<div class='alert alert-warning' style='width:13%; text-align:center; margin:2%' role='alert'>Le produit a été supprimé !</div>";
+                $_SESSION['Message'] = "<div class='alert alert-warning' style='width:25%; text-align:center; margin:2%' role='alert'>Le produit $deletedProduct a été supprimé !</div>";
             }
             else{
-                $_SESSION['Message'] = "<div class='alert alert-warning' style='width:13%; text-align:center; margin:2%' role='alert'>Le produit a été supprimé !</div>
+                $_SESSION['Message'] = "<div class='alert alert-warning' style='width:25%; text-align:center; margin:2%' role='alert'>Le produit $deletedProduct a été supprimé !</div>
                                         <p class='ms-3' >Le panier est vide...</p>";
 
             }
@@ -89,6 +90,8 @@ if (isset($_GET['action'])) {
             // DIMINUER LA QUANTITE D'UN PRODUIT //
         case "down-qtt":
 
+            $deletedProduct = $_SESSION['products'][$_GET['id']]['name'];
+
             // diminue la quantité d'un produit de 1
             $_SESSION['products'][$_GET['id']]['qtt']--;
 
@@ -100,11 +103,11 @@ if (isset($_GET['action'])) {
 
                 if(!empty($_SESSION['products'])){
                     // affiche le message de suppression du produit s'il y a encore des produits dans le panier
-                    $_SESSION['Message'] = "<div class='alert alert-warning' style='width:13%; text-align:center; margin:2%' role='alert'>Le produit a été supprimé !</div>";
+                    $_SESSION['Message'] = "<div class='alert alert-warning' style='width:25%; text-align:center; margin:2%' role='alert'>Le produit $deletedProduct a été supprimé !</div>";
                 }
                 else{
                     // affiche le message de suppression du produit et que le panier est vide
-                    $_SESSION['Message'] = "<div class='alert alert-warning' style='width:13%; text-align:center; margin:2%' role='alert'>Le produit a été supprimé !</div>
+                    $_SESSION['Message'] = "<div class='alert alert-warning' style='width:25%; text-align:center; margin:2%' role='alert'>Le produit $deletedProduct a été supprimé !</div>
                                             <p class='ms-3' >Le panier est vide...</p>";
                 }
             }
