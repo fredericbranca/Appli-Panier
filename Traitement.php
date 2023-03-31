@@ -53,23 +53,23 @@ if (isset($_GET['action'])) {
                             $_SESSION['products'][] = $product;
         
                             // Affiche l'ajout du produit au panier
-                            $_SESSION['Message'] = "<div class='alert alert-success' style='width:17%; text-align:center' role='alert'>Produit ajouté au panier avec succès</div>";
+                            $_SESSION['Message'] = "<div class='alert alert-success container-sm' role='alert'>Produit ajouté au panier avec succès</div>";
                         }
                         else {
                             // Affiche le refus de l'ajout au panier
-                            $_SESSION['Message'] = "<div class='alert alert-danger' style='width:17%; text-align:center' role='alert'>Nom, Prix, Quantité ou Description contient une erreur </div>";
+                            $_SESSION['Message'] = "<div class='alert alert-danger container-sm' role='alert'>Nom, Prix, Quantité ou Description contient une erreur </div>";
                         }
                     }
                     else {
-                        $_SESSION['Message'] = "<div class='alert alert-danger' style='width:28%; text-align:center' role='alert'>Le fichier n'est pas une image (.jpg, .png, .jpeg ou .gif) ou la taille de l'image est trop grande </div>";
+                        $_SESSION['Message'] = "<div class='alert alert-danger container-sm' role='alert'>Le fichier n'est pas une image (.jpg, .png, .jpeg ou .gif) ou la taille de l'image est trop grande </div>";
                     }
                 }
                 else{
-                    $_SESSION['Message'] = "<div class='alert alert-danger' style='width:17%; text-align:center' role='alert'>Erreur image</div>";
+                    $_SESSION['Message'] = "<div class='alert alert-danger container-sm' role='alert'>Erreur image</div>";
                 }
             }
             else{
-                $_SESSION['Message'] = "<div class='alert alert-danger' style='width:17%; text-align:center' role='alert'>Erreur formulaire produit</div>";
+                $_SESSION['Message'] = "<div class='alert alert-danger container-sm' role='alert'>Erreur formulaire produit</div>";
             }
 
             break; //permet de ne pas passer à la case suivante
@@ -86,7 +86,7 @@ if (isset($_GET['action'])) {
             unset($_SESSION['products']);
 
             // afficher le message de confirmation du panier vidé
-            $_SESSION['Message'] = "<div class='alert alert-warning' style='width:10%; text-align:center; margin:2%' role='alert'>Le panier a été vidé !</div>";
+            $_SESSION['Message'] = "<div class='alert alert-warning container-sm' role='alert'>Le panier a été vidé !</div>";
 
             // redirection
             header("Location: Recap.php");
@@ -102,10 +102,10 @@ if (isset($_GET['action'])) {
             unset($_SESSION['products'][$_GET['id']]);
             // mise en forme pour l'affichage : afficher le message de suppression du produit
             if (!empty($_SESSION['products'])) {
-                $_SESSION['Message'] = "<div class='alert alert-warning' style='width:25%; text-align:center; margin:2%' role='alert'>Le produit $deletedProduct a été supprimé !</div>";
+                $_SESSION['Message'] = "<div class='alert alert-warning container-sm' role='alert'>Le produit $deletedProduct a été supprimé !</div>";
             } else {
-                $_SESSION['Message'] = "<div class='alert alert-warning' style='width:25%; text-align:center; margin:2%' role='alert'>Le produit $deletedProduct a été supprimé !</div>
-                                        <p class='ms-3' >Le panier est vide...</p>";
+                $_SESSION['Message'] = "<div class='alert alert-warning container-sm' role='alert'>Le produit $deletedProduct a été supprimé !</div>
+                                        <p class='container-sm' >Le panier est vide...</p>";
             }
 
             //redirection
@@ -141,11 +141,11 @@ if (isset($_GET['action'])) {
 
                 if (!empty($_SESSION['products'])) {
                     // affiche le message de suppression du produit s'il y a encore des produits dans le panier
-                    $_SESSION['Message'] = "<div class='alert alert-warning' style='width:25%; text-align:center; margin:2%' role='alert'>Le produit $deletedProduct a été supprimé !</div>";
+                    $_SESSION['Message'] = "<div class='alert alert-warning container-sm'>Le produit $deletedProduct a été supprimé !</div>";
                 } else {
                     // affiche le message de suppression du produit et que le panier est vide
-                    $_SESSION['Message'] = "<div class='alert alert-warning' style='width:25%; text-align:center; margin:2%' role='alert'>Le produit $deletedProduct a été supprimé !</div>
-                                            <p class='ms-3' >Le panier est vide...</p>";
+                    $_SESSION['Message'] = "<div class='alert alert-warning container-sm' role='alert'>Le produit $deletedProduct a été supprimé !</div>
+                                            <p class='container-sm' >Le panier est vide...</p>";
                 }
             }
             // redirection
@@ -155,9 +155,9 @@ if (isset($_GET['action'])) {
 
         case "detail":
             $product = $_SESSION['products'][$_GET['id']];
-            $_SESSION['Message'] = "<img style='max-height:250px; margin-left:15px' src='fichierImg/".$product['file']."' alt='Image du produit'>
-                                    <p style='margin-left:15px'>" . $product['name'] . "</p>
-                                    <p style='margin-left:15px'>" . $product['description'] . "</p>";
+            $_SESSION['Message'] = "<img class='img-thumbnail' src='fichierImg/".$product['file']."' alt='Image du produit'>
+                                    <p class='container-sm'>" . $product['name'] . "</p>
+                                    <p class='container-sm'>" . $product['description'] . "</p>";
             // redirection
             header("Location: Recap.php");
             die();

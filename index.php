@@ -16,10 +16,9 @@ require "functions.php";
     <title>Ajout produit</title>
 </head>
 <header>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg bg-light ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="http://localhost/">Localhost</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <a class="navbar-brand" href="index.php">Localhost</a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
@@ -39,7 +38,6 @@ require "functions.php";
                         </div>
                     </li>
                 </ul>
-            </div>
         </div>
     </nav>
 </header>

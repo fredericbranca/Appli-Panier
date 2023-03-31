@@ -20,8 +20,7 @@ require "functions.php";
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
         <!-- Redirection localhost -->
-        <a class="navbar-brand" href="http://localhost/">Localhost</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <a class="navbar-brand" href="index.php">Localhost</a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <!-- Accueil -->
                     <li class="nav-item">
@@ -43,7 +42,6 @@ require "functions.php";
                         </div>
                     </li>
                 </ul>
-            </div>
         </div>
     </nav>
 </header>
