@@ -47,7 +47,7 @@ if (isset($_GET['action'])) {
                         if($name && $price && $qtt && $description) {
 
                             // Tableau du produit
-                            $product = ['name' => $name, 'price' => $price, 'qtt' => $qtt, 'total' => $price * $qtt, 'description' => $description];
+                            $product = ['name' => $name, 'price' => $price, 'qtt' => $qtt, 'total' => $price * $qtt, 'description' => $description, 'file' => $file];
         
                             // Ajoute un produit en session
                             $_SESSION['products'][] = $product;
@@ -77,6 +77,11 @@ if (isset($_GET['action'])) {
             // VIDER LE PANIER //
         case "clear":
 
+            //supprime toutes les images temporaire
+            foreach($_SESSION["products"] as $k => $p){
+                unlink("fichierImg/" . $_SESSION['products'][$k]['file']);
+            }
+
             //supprimer le tableau de produits en session
             unset($_SESSION['products']);
 
@@ -93,8 +98,8 @@ if (isset($_GET['action'])) {
 
             // supprime le produit assoscié à l'id qui lui est attribué grâce à la method GET de l'URL
             $deletedProduct = $_SESSION['products'][$_GET['id']]['name'];
+            unlink("fichierImg/" . $_SESSION['products'][$_GET['id']]['file']);
             unset($_SESSION['products'][$_GET['id']]);
-
             // mise en forme pour l'affichage : afficher le message de suppression du produit
             if (!empty($_SESSION['products'])) {
                 $_SESSION['Message'] = "<div class='alert alert-warning' style='width:25%; text-align:center; margin:2%' role='alert'>Le produit $deletedProduct a été supprimé !</div>";
@@ -131,6 +136,7 @@ if (isset($_GET['action'])) {
             if ($_SESSION['products'][$_GET['id']]['qtt'] == 0) {
 
                 // supprime le produit assoscié à l'id qui lui est attribué
+                unlink("fichierImg/" . $_SESSION['products'][$_GET['id']]['file']);
                 unset($_SESSION['products'][$_GET['id']]);
 
                 if (!empty($_SESSION['products'])) {
@@ -149,7 +155,13 @@ if (isset($_GET['action'])) {
 
         case "detail":
             $product = $_SESSION['products'][$_GET['id']];
-            
+            $_SESSION['Message'] = "<img style='max-height:250px; margin-left:15px' src='fichierImg/".$product['file']."' alt='Image du produit'>
+                                    <p style='margin-left:15px'>" . $product['name'] . "</p>
+                                    <p style='margin-left:15px'>" . $product['description'] . "</p>";
+            // redirection
+            header("Location: Recap.php");
+            die();
+            break;
     }
 }
 
