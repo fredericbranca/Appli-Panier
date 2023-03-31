@@ -46,7 +46,7 @@ require "functions.php";
 
 <body>
 
-    <form action="Traitement.php?action=add" method="post">
+    <form action="Traitement.php?action=add" method="post" enctype="multipart/form-data">
         <div class="ms-3 shadow p-3 mb-5 bg-body rounded">
             <p class="fs-2 shadow-sm p-3 mb-5 bg-body rounded">Ajouter un produit</p>
             <div class="col-md-4">
@@ -74,6 +74,22 @@ require "functions.php";
                 </div>
             </div>
             </p>
+
+            <p>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-text" id="inputGroupPrepend">Image</span>
+                    <input type="file" name="file" class="form-control" aria-describedby="inputGroupPrepend">
+                </div>
+            </div>
+            </p>
+
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-text" id="inputGroupPrepend">Description du produit</span>
+                    <input type="text" name="description" class="form-control" aria-describedby="inputGroupPrepend">
+                </div>
+            </div>
 
             <p>
             <div class="col-12">

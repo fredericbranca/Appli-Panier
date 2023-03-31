@@ -18,26 +18,60 @@ if (isset($_GET['action'])) {
 
                 $qtt = filter_input(INPUT_POST, 'qtt', FILTER_VALIDATE_INT); //ne validera la quantité que si celle-ci est un nombre entier différent de zéro (qui est considéré comme nul)
 
-                $id++;
+                $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-                // Check si les valeurs ont été entrées correctement //
-                if ($name && $price && $qtt) {
+                // IMAGE //
+                if (isset($_FILES['file'])) {
 
-                    // Tableau du produit
-                    $product = ['name' => $name, 'price' => $price, 'qtt' => $qtt, 'total' => $price * $qtt];
+                    $tmpName = $_FILES['file']['tmp_name'];
+                    $ImgName = $_FILES['file']['name'];
+                    $size = $_FILES['file']['size'];
+                    $error = $_FILES['file']['error'];
 
-                    // Ajoute un produit en session
-                    $_SESSION['products'][] = $product;
+                    // vérification sur l'extension du fichier //
+                    $tabExtension = explode('.', $ImgName);
+                    $extension = strtolower(end($tabExtension));
+                    //Tableau des extensions que l'on accepte
+                    $extensions = ['jpg', 'png', 'jpeg', 'gif'];
+                    //Taille max que l'on accepte
+                    $maxSize = 4000000;
 
-                    // Affiche l'ajout du produit au panier
-                    $_SESSION['Message'] = "<div class='alert alert-success' style='width:17%; text-align:center' role='alert'>Produit ajouté au panier avec succès</div>";
-                    
+                    if (in_array($extension, $extensions) && $size <= $maxSize && $error == 0) {
+                        $uniqueName = uniqid('', true);
+                        //uniqid génère quelque chose comme ca : 5f586bf96dcd38.73540086
+                        $file = $uniqueName . "." . $extension;
+                        //$file = 5f586bf96dcd38.73540086.jpg
+                        move_uploaded_file($tmpName, 'fichierImg/' . $file);
 
-                } else {
-                    // Affiche le refus de l'ajout au panier
-                    $_SESSION['Message'] = "<div class='alert alert-danger' style='width:17%; text-align:center' role='alert'>Le produit n'a pas été ajouté au panier </div>";
+                        // Check si les valeurs ont été entrées correctement //
+                        if($name && $price && $qtt && $description) {
+
+                            // Tableau du produit
+                            $product = ['name' => $name, 'price' => $price, 'qtt' => $qtt, 'total' => $price * $qtt, 'description' => $description];
+        
+                            // Ajoute un produit en session
+                            $_SESSION['products'][] = $product;
+        
+                            // Affiche l'ajout du produit au panier
+                            $_SESSION['Message'] = "<div class='alert alert-success' style='width:17%; text-align:center' role='alert'>Produit ajouté au panier avec succès</div>";
+                        }
+                        else {
+                            // Affiche le refus de l'ajout au panier
+                            $_SESSION['Message'] = "<div class='alert alert-danger' style='width:17%; text-align:center' role='alert'>Nom, Prix, Quantité ou Description contient une erreur </div>";
+                        }
+                    }
+                    else {
+                        $_SESSION['Message'] = "<div class='alert alert-danger' style='width:28%; text-align:center' role='alert'>Le fichier n'est pas une image (.jpg, .png, .jpeg ou .gif) ou la taille de l'image est trop grande </div>";
+                    }
+                }
+                else{
+                    $_SESSION['Message'] = "<div class='alert alert-danger' style='width:17%; text-align:center' role='alert'>Erreur image</div>";
                 }
             }
+            else{
+                $_SESSION['Message'] = "<div class='alert alert-danger' style='width:17%; text-align:center' role='alert'>Erreur formulaire produit</div>";
+            }
+
             break; //permet de ne pas passer à la case suivante
 
             // VIDER LE PANIER //
@@ -62,15 +96,13 @@ if (isset($_GET['action'])) {
             unset($_SESSION['products'][$_GET['id']]);
 
             // mise en forme pour l'affichage : afficher le message de suppression du produit
-            if(!empty($_SESSION['products'])){
+            if (!empty($_SESSION['products'])) {
                 $_SESSION['Message'] = "<div class='alert alert-warning' style='width:25%; text-align:center; margin:2%' role='alert'>Le produit $deletedProduct a été supprimé !</div>";
-            }
-            else{
+            } else {
                 $_SESSION['Message'] = "<div class='alert alert-warning' style='width:25%; text-align:center; margin:2%' role='alert'>Le produit $deletedProduct a été supprimé !</div>
                                         <p class='ms-3' >Le panier est vide...</p>";
-
             }
-            
+
             //redirection
             header('Location: Recap.php');
             die();
@@ -96,16 +128,15 @@ if (isset($_GET['action'])) {
             $_SESSION['products'][$_GET['id']]['qtt']--;
 
             // si la quantité passe à 0 
-            if($_SESSION['products'][$_GET['id']]['qtt'] == 0 ){
+            if ($_SESSION['products'][$_GET['id']]['qtt'] == 0) {
 
                 // supprime le produit assoscié à l'id qui lui est attribué
                 unset($_SESSION['products'][$_GET['id']]);
 
-                if(!empty($_SESSION['products'])){
+                if (!empty($_SESSION['products'])) {
                     // affiche le message de suppression du produit s'il y a encore des produits dans le panier
                     $_SESSION['Message'] = "<div class='alert alert-warning' style='width:25%; text-align:center; margin:2%' role='alert'>Le produit $deletedProduct a été supprimé !</div>";
-                }
-                else{
+                } else {
                     // affiche le message de suppression du produit et que le panier est vide
                     $_SESSION['Message'] = "<div class='alert alert-warning' style='width:25%; text-align:center; margin:2%' role='alert'>Le produit $deletedProduct a été supprimé !</div>
                                             <p class='ms-3' >Le panier est vide...</p>";
@@ -115,6 +146,10 @@ if (isset($_GET['action'])) {
             header("Location: Recap.php");
             die();
             break;
+
+        case "detail":
+            $product = $_SESSION['products'][$_GET['id']];
+            
     }
 }
 
