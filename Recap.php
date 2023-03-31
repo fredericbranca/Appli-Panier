@@ -89,7 +89,7 @@ require "functions.php";
                 $total = $produit['price'] * $produit['qtt'];
                 echo "<tr>",
                         "<td>".($key+1)."</td>",
-                        "<td><a href='Traitement.php?action=detail&id=$key'>".$produit['name']."</a></td>",
+                        "<td><a href='Traitement.php?action=detail&id=$key'><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>".$produit['name']."</button></a></td>",
                         "<td>".number_format($produit['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                         "<td>".$produit['qtt']. "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp",
                         "<a href='Traitement.php?action=up-qtt&id=$key'><i class='fa-sharp fa-solid fa-plus'></i></a>&nbsp&nbsp",
