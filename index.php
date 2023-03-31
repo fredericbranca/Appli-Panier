@@ -50,7 +50,7 @@ require "functions.php";
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-text" id="inputGroupPrepend">Nom du produit</span>
-                    <input type="text" name="name" class="form-control" aria-describedby="inputGroupPrepend">
+                    <input type="text" name="name" class="form-control" aria-describedby="inputGroupPrepend" autocomplete="off">
                 </div>
             </div>
 
@@ -58,7 +58,7 @@ require "functions.php";
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-text" id="inputGroupPrepend">Prix du produit&nbsp;&nbsp;</span>
-                    <input type="number" min="0.01" step="0.01" name="price" class="form-control" aria-describedby="inputGroupPrepend">
+                    <input type="number" min="0.01" step="0.01" name="price" class="form-control" aria-describedby="inputGroupPrepend" autocomplete="off">
                     <span class="input-group-text" id="basic-addon1">€</span>
                 </div>
             </div>
@@ -68,7 +68,7 @@ require "functions.php";
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-text" id="inputGroupPrepend">Quantité désirée</span>
-                    <input type="number" min="1" step="1" name="qtt" value="1" class="form-control" aria-describedby="inputGroupPrepend">
+                    <input type="number" min="1" step="1" name="qtt" value="1" class="form-control" aria-describedby="inputGroupPrepend" autocomplete="off">
                 </div>
             </div>
             </p>
@@ -77,7 +77,7 @@ require "functions.php";
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-text" id="inputGroupPrepend">Image</span>
-                    <input type="file" name="file" class="form-control" aria-describedby="inputGroupPrepend">
+                    <input type="file" name="file" class="form-control" aria-describedby="inputGroupPrepend" autocomplete="off">
                 </div>
             </div>
             </p>
@@ -85,7 +85,7 @@ require "functions.php";
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-text" id="inputGroupPrepend">Description du produit</span>
-                    <input type="text" name="description" class="form-control" aria-describedby="inputGroupPrepend">
+                    <input type="text" name="description" class="form-control" aria-describedby="inputGroupPrepend" autocomplete="off">
                 </div>
             </div>
 
