@@ -89,7 +89,9 @@ require "functions.php";
                 $total = $produit['price'] * $produit['qtt'];
                 echo "<tr>",
                         "<td>".($key+1)."</td>",
-                        "<td><a href='Traitement.php?action=detail&id=$key'><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>".$produit['name']."</button></a></td>",
+                        "<td>
+                            <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal$key'>" . $_SESSION['products'][$key]['name'] . "</button>",
+                        "</td>",
                         "<td>".number_format($produit['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                         "<td>".$produit['qtt']. "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp",
                         "<a href='Traitement.php?action=up-qtt&id=$key'><i class='fa-sharp fa-solid fa-plus'></i></a>&nbsp&nbsp",
@@ -113,6 +115,28 @@ require "functions.php";
                 echo $_SESSION['Message'];
                 unset($_SESSION['Message']);
             }
+
+            foreach($_SESSION['products'] as $key => $produit)
+            {
+                echo "<div class='modal fade' id='exampleModal$key' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>",
+                    "<div class='modal-dialog'>",
+                        "<div class='modal-content'>",
+                            "<img class='img-thumbnail' src='fichierImg/" . $_SESSION['products'][$key]['file'] . "' alt='Image du produit'/>",
+                                "<div class='modal-header'>",
+                                    "<p class='modal-title fs-5' id='exampleModalLabel'>" . $_SESSION['products'][$key]['name'] . "</p>",
+                                    "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>",
+                                "</div>",
+                                "<div class='modal-body'>",
+                                    "<p>" . $_SESSION['products'][$key]['description'] . "</p>",
+                                "</div>",
+                                "<div class='modal-footer'>",
+                                    "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>",
+                                    "<button type='button' class='btn btn-primary'>Save changes</button>",
+                                "</div>",
+                        "</div>",
+                    "</div>",
+                "</div>";
+            }
         }
     
     ?>
@@ -123,5 +147,6 @@ require "functions.php";
             <div id="circle" class="circle"></div>
             <script type="text/javascript" src="kinet.min.js"></script>
             <script type="text/javascript" src="cursor.js"></script>
+
 </body>
 </html>

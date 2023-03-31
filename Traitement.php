@@ -153,30 +153,13 @@ if (isset($_GET['action'])) {
             die();
             break;
 
-        case "detail":
-            $product = $_SESSION['products'][$_GET['id']];
-            $_SESSION['Message'] =  "<div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                                        <div class='modal-dialog'>
-                                            <div class='modal-content'>
-                                                <img class='img-thumbnail' src='fichierImg/".$product['file']."' alt='Image du produit'/>
-                                                    <div class='modal-header'>
-                                                        <p class='modal-title fs-5' id='exampleModalLabel'>" . $product['name'] . "</p>
-                                                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                                                    </div>
-                                                    <div class='modal-body'>
-                                                        <p>" . $product['description'] . "</p>
-                                                    </div>
-                                                    <div class='modal-footer'>
-                                                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-                                                        <button type='button' class='btn btn-primary'>Save changes</button>
-                                                    </div>
-                                            </div>
-                                        </div>
-                                    </div>";
-            // redirection
-            header("Location: Recap.php");
-            die();
-            break;
+        // case "detail":
+        //     $product = $_SESSION['products'][$_GET['id']];
+        //     $_SESSION['Message'] =  "";
+        //     // redirection
+        //     header("Location: Recap.php");
+        //     die();
+        //     break;
     }
 }
 
