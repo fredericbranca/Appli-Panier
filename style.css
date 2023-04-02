@@ -1,102 +1,51 @@
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 0;
   height: 100vh;
-  overflow: hidden;
 }
 
-button {
-  border:none;
+.accueil {
+  background: url(background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left;
 }
 
-.bg-light {
-  padding-bottom: 20px;
-  
-}
-
-#cursor {
-  position:absolute;
-  width: 25px;
-  height: 25px;
-  border: 2px solid #000;
-  box-sizing: border-box;
-  transition: 0,1s;
-  transform: translateX(-50%) translateY(-50%) translateZ(0px);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 10;
+.container {
+  padding-top: 5% !important;
 }
 
 .circle {
-  width: 25px;
-  height: 25px;
-  border: 2px solid hsl(0, 0%, 0%);
+  width: 10px;
+  height: 10px;
+  border: 1px solid hsl(0, 0%, 0%);
   border-radius: 50%;
   position: absolute;
   transform: translateX(-50%) translateY(-50%) translateZ(0px);
   top: 50%;
   left: 50%;
-  margin: -12px 0 0 -11px;
+  margin: -5px 0 0 -5px;
   pointer-events: none;
-  z-index: 10;
+  z-index: 10 !important;
 }
 
-div.session {
-  position: absolute;
-  right: 35px;
+.panier {
+  margin-right: 4% !important;
+  font-size: 30px !important;
 }
 
-.fa-cart-shopping {
-  font-size: 40px;
-  color: black;
+.nb {
+  font-size: 11px !important;
 }
 
-.fa-square-xmark:hover {
-  color:red;
+.submit {
+  margin-bottom: 10px !important;
 }
 
-.fa-square-xmark:active {
-  font-size: 15px;
-}
-
-.navbar-brand {
-  margin-top: 6px;
-}
-.nav-item {
-  margin-top: 10px;
-}
-
-.position-relative {
-  background-color: rgba(0, 0, 0, 0) !important;
-  border-color: rgba(0, 0, 0, 0) !important;
-}
-
-.position-relative:hover {
-  background-color: rgba(0, 0, 0, 0) !important;
-  border-color: rgba(0, 0, 0, 0) !important;
-}
-
-.position-relative:active {
-  background-color: rgba(0, 0, 0, 0) !important;
-  border-color: rgba(0, 0, 0, 0) !important;
-}
-
-.table-hover
-{
-width: 50%;
-margin: 1%;
-}
-
-.green {
-  color:green;
-}
-
-.red {
-  color: red;
+.text {
+  margin-left: 45%;
 }

@@ -13,108 +13,93 @@ require "functions.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 
-    <title>Ajout produit</title>
+    <title>Panier</title>
 </head>
 <header>
-    <nav class="navbar navbar-expand-lg bg-light ">
+
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand fixed-top bg-l-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.php">Localhost</a>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse">
+                <ul class="text navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Recap.php">Récapitulatif</a>
-                    </li>
-                    <li class="nav-item">
-                        <div class="session">
-                            <div class="btn btn-primary position-relative">
-                                <a href="Recap.php"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                    <?php echo sumQtt() ?>
-                                </span>
-                                
-                            </div>
-                        </div>
+                        <a class="nav-link" href="Recap.php">Récaputitulatif</a>
                     </li>
                 </ul>
+                <button class="panier border-0 bg-white">
+                    <a href="Recap.php">
+                        <i class="fa-solid fa-cart-shopping text-dark"></i>
+                        <span class="nb position-absolute top-50 start-80 badge text-bg-primary">
+                            <?php echo sumQtt(); ?>
+                        </span>
+                    </a>
+                </button>
+            </div>
         </div>
     </nav>
+
+
 </header>
 
 <body>
 
-    <form action="Traitement.php?action=add" method="post" enctype="multipart/form-data">
-        <div class="ms-3 shadow p-3 mb-5 bg-body rounded">
-            <p class="fs-2 shadow-sm p-3 mb-5 bg-body rounded">Ajouter un produit</p>
-            <div class="col-md-4">
-                <div class="input-group">
-                    <span class="input-group-text" id="inputGroupPrepend">Nom du produit</span>
-                    <input type="text" name="name" class="form-control" aria-describedby="inputGroupPrepend" autocomplete="off">
+    <!-- Accueil -->
+
+    <section class="accueil w-100 h-100">
+
+        <div class="container flex-column d-flex align-items-center">
+
+            <h1 class="display-4 text-black text-center p-2">Ajouter un produit</h1>
+            <form action="Traitement.php?action=add" method="post" enctype="multipart/form-data">
+
+                <div class="input-group mb-3">
+                    <input type="text" name="name" class="form-control" maxlength="30" placeholder="Nom du produit" aria-label="name" aria-describedby="basic-addon1" autocomplete="off">
                 </div>
-            </div>
 
-            <p>
-            <div class="col-md-4">
-                <div class="input-group">
-                    <span class="input-group-text" id="inputGroupPrepend">Prix du produit&nbsp;&nbsp;</span>
-                    <input type="number" min="0.01" step="0.01" name="price" class="form-control" aria-describedby="inputGroupPrepend" autocomplete="off">
-                    <span class="input-group-text" id="basic-addon1">€</span>
+                <div class="input-group mb-3">
+                    <input type="number" min="0.01" max="999999" step="0.01" name="price" class="form-control" placeholder="Prix" aria-label="name" aria-describedby="basic-addon1" autocomplete="off">
+                    <span class="input-group-text">€</span>
                 </div>
-            </div>
-            </p>
 
-            <p>
-            <div class="col-md-4">
-                <div class="input-group">
-                    <span class="input-group-text" id="inputGroupPrepend">Quantité désirée</span>
-                    <input type="number" min="1" step="1" name="qtt" value="1" class="form-control" aria-describedby="inputGroupPrepend" autocomplete="off">
+                <div class="input-group mb-3">
+                    <input type="number" min="1" max="1000" step="1" name="qtt" class="form-control" placeholder="Quantité désirée" aria-label="name" aria-describedby="basic-addon1" autocomplete="off">
                 </div>
-            </div>
-            </p>
 
-            <p>
-            <div class="col-md-4">
-                <div class="input-group">
-                    <span class="input-group-text" id="inputGroupPrepend">Image</span>
-                    <input type="file" name="file" class="form-control" aria-describedby="inputGroupPrepend" autocomplete="off">
+                <div class="input-group mb-3">
+                    <input type="text" name="description" class="form-control" maxlength="400" placeholder="Description" aria-label="name" aria-describedby="basic-addon1" autocomplete="off">
                 </div>
-            </div>
-            </p>
 
-            <div class="col-md-4">
-                <div class="input-group">
-                    <span class="input-group-text" id="inputGroupPrepend">Description du produit</span>
-                    <input type="text" name="description" class="form-control" aria-describedby="inputGroupPrepend" autocomplete="off">
+                <div class="input-group mb-3">
+                    <input type="file" name="file" class="form-control" id="inputGroupFile01">
+                    <label class="input-group-text" for="inputGroupFile01">Image</label>
                 </div>
-            </div>
 
-            <p>
-            <div class="col-12">
-                <button class="btn btn-primary" name="submit" type="submit">Ajouter le produit</button>
-            </div>
-            </p>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button type="submit" name="submit" class="btn btn-outline-secondary submit">Ajouter le produit</button>
+                </div>
 
-            <p> <?php 
-                    if(isset($_SESSION['Message'])){
-                        echo $_SESSION['Message'];
-                        unset($_SESSION['Message']);
-                    }
-                ?>
-            </p>
+            </form>
 
+            <?php
+            if (isset($_SESSION['Message'])) {
+                echo $_SESSION['Message'];
+                unset($_SESSION['Message']);
+            }
+            ?>
 
         </div>
-    </div>
-    </form>
+    </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
-
     <!-- curseur -->
-        <div id="circle" class="circle"></div>
-        <script type="text/javascript" src="kinet.min.js"></script>
-        <script type="text/javascript" src="cursor.js"></script>
+    <div id="circle" class="circle"></div>
+    <script type="text/javascript" src="kinet.min.js"></script>
+    <script type="text/javascript" src="cursor.js"></script>
 
 </body>
 
