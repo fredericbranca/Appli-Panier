@@ -86,7 +86,7 @@ if (isset($_GET['action'])) {
             unset($_SESSION['products']);
 
             // afficher le message de confirmation du panier vidé
-            $_SESSION['Message'] = "<div class='alert alert-success' role='alert'>Le panier a été vidé !</div>";
+            $_SESSION['Message'] = "<div class='alert alert-success vide' role='alert'>Le panier a été vidé !</div>";
 
             // redirection
             header("Location: Recap.php");
@@ -104,7 +104,7 @@ if (isset($_GET['action'])) {
             if (!empty($_SESSION['products'])) {
                 $_SESSION['Message'] = "<div class='alert alert-success' role='alert'>Le produit $deletedProduct a été supprimé !</div>";
             } else {
-                $_SESSION['Message'] = "<div class='alert alert-success' role='alert'>Le produit $deletedProduct a été supprimé !</div>
+                $_SESSION['Message'] = "<div class='alert alert-success vide' role='alert'>Le produit $deletedProduct a été supprimé !</div>
                                         <div class='alert alert-warning' role='alert'>Le panier a été vidé...</div>";
             }
 
@@ -116,8 +116,13 @@ if (isset($_GET['action'])) {
             // AUGMENTER LA QUANTITE D'UN PRODUIT //
         case "up-qtt":
 
-            // augmente la quantité d'un produit de 1
-            $_SESSION['products'][$_GET['id']]['qtt']++;
+            // augmente la quantité d'un produit de 1 si < 1000
+            if ($_SESSION['products'][$_GET['id']]['qtt'] < 1000){
+                $_SESSION['products'][$_GET['id']]['qtt']++;
+            }
+            else{
+                $_SESSION['Message'] = "<div class='alert alert-danger'>Action impossible : Vous avez déjà atteint la quantité maximale !</div>";
+            }
 
             // redirection
             header('Location: Recap.php');
@@ -144,7 +149,7 @@ if (isset($_GET['action'])) {
                     $_SESSION['Message'] = "<div class='alert alert-warning'>Le produit $deletedProduct a été supprimé !</div>";
                 } else {
                     // affiche le message de suppression du produit et que le panier est vide
-                    $_SESSION['Message'] = "<div class='alert alert-warning' role='alert'>Le produit $deletedProduct a été supprimé !</div>
+                    $_SESSION['Message'] = "<div class='alert alert-warning vide' role='alert'>Le produit $deletedProduct a été supprimé !</div>
                                             <div class='alert alert-warning' role='alert'>Le panier a été vidé...</div>";
                 }
             }

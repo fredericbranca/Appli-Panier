@@ -19,25 +19,31 @@ require "functions.php";
 
     <!-- Navbar -->
 
-    <nav class="navbar navbar-expand fixed-top bg-l-light">
+    <nav class="navbar navbar-expand-sm bg-l-light">
         <div class="container-fluid">
-            <div class="collapse navbar-collapse">
-                <ul class="text navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Recap.php">Récaputitulatif</a>
-                    </li>
-                </ul>
-                <button class="panier border-0 bg-white">
-                    <a href="Recap.php">
-                        <i class="fa-solid fa-cart-shopping text-dark"></i>
-                        <span class="nb position-absolute top-50 start-80 badge text-bg-primary">
-                            <?php echo sumQtt(); ?>
-                        </span>
-                    </a>
-                </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Ajouter un produit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="text navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Recap.php">Récaputitulatif</a>
+                        </li>
+                    </ul>
+                    <button class="panier border-0 bg-white">
+                            <a class="text-black" href="Recap.php">
+                                <i class="fa-solid fa-cart-shopping text-dark"></i><span class="nb badge text-bg-primary"><?php echo sumQtt(); ?></span>
+                            </a>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
