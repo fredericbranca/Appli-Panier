@@ -53,13 +53,20 @@ h1.display-6 {
   margin-top: 20px !important;
 }
 
-.nav-item {
-  z-index: 1;
+.block {
+  justify-content: center !important;
+}
+
+.pos {
+ position: absolute !important;
+ left : 75% ;
 }
 
 .panier {
+  padding: 0 10px !important;
   background-color: white !important;
   border-color: white; 
+  width: 52px !important;
 }
 
 .panier:hover {
@@ -73,7 +80,8 @@ h1.display-6 {
 .nb {
   background-color: white !important;
   border: 1px solid rgb(138, 137, 137) !important;
-  color: rgb(138, 137, 137)
+  color: rgb(138, 137, 137);
+  font-size: 12px;
 }
 
 .submit {
