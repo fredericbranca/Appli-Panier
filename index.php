@@ -1,6 +1,6 @@
 <?php
 session_start();
-ob_start()
+ob_start();
 
 ?>
 
@@ -54,3 +54,4 @@ ob_start()
         $titre = "Ajouter un produit";
         $accueil = "active";
         require "template.php";
+    ?>
