@@ -53,12 +53,13 @@ h1.display-6 {
   margin-top: 20px !important;
 }
 
+.nav-item {
+  z-index: 1;
+}
+
 .panier {
-  margin-right: 4% !important;
-  margin-top: 5px !important;
   background-color: white !important;
   border-color: white; 
-  padding: 3px 8ypx !important;
 }
 
 .panier:hover {
@@ -77,10 +78,6 @@ h1.display-6 {
 
 .submit {
   margin-bottom: 10px !important;
-}
-
-.text {
-  margin-right: 37%;
 }
 
 .bi {

@@ -2,7 +2,6 @@
     require "functions.php";
     $accueil = (isset($accueil)) ? $accueil : "";
     $recap = (isset($recap)) ? $recap : "";
-    
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +35,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <ul class="text navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3 ">
                             <li class="nav-item">
                                 <a class="nav-link <?= $accueil ?>" aria-current="page" href="index.php">Accueil</a>
                             </li>
@@ -44,11 +43,13 @@
                                 <a class="nav-link  <?= $recap ?>" href="Recap.php">Récaputitulatif</a>
                             </li>
                         </ul>
-                        <button class="btn btn-primary position-relative panier">
-                            <a class="text-black" href="Recap.php">
-                                <img src="cart.svg" class="filter"><span class="nb position-absolute top-0 start-100 translate-middle badge rounded-pill"><?php echo sumQtt(); ?></span>
-                            </a>
-                        </button>
+                        <ul class="navbar-nav mt-1 position-absolute block">
+                            <button class="btn btn-primary panier ">
+                                <a class="text-black" href="Recap.php">
+                                    <img src="cart.svg" class="filter"><span class="nb position-absolute top-0 start-100 translate-middle badge rounded-pill"><?php echo sumQtt(); ?></span>
+                                </a>
+                            </button>
+                        </ul>
                     </div>
                 </div>
             </div>
