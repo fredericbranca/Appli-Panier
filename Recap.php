@@ -39,10 +39,10 @@ require "functions.php";
                             <a class="nav-link active" href="Recap.php">Récaputitulatif</a>
                         </li>
                     </ul>
-                    <button class="panier border-0 bg-white">
-                            <a class="text-black" href="Recap.php">
-                                <i class="fa-solid fa-cart-shopping text-dark"></i><span class="nb badge text-bg-primary"><?php echo sumQtt(); ?></span>
-                            </a>
+                    <button class="btn btn-primary position-relative panier">
+                        <a class="text-black" href="Recap.php">
+                            <img src="cart.svg" class="filter"><span class="nb position-absolute top-0 start-100 translate-middle badge rounded-pill"><?php echo sumQtt(); ?></span>
+                        </a>
                     </button>
                 </div>
             </div>

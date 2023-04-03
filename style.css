@@ -5,7 +5,7 @@
 }
 
 body {
-  height: 90vh;
+  height: 93vh;
 }
 
 .accueil {
@@ -55,11 +55,24 @@ h1.display-6 {
 
 .panier {
   margin-right: 4% !important;
-  font-size: 30px !important;
+  margin-top: 5px !important;
+  background-color: white !important;
+  border-color: white; 
+  padding: 3px 8ypx !important;
+}
+
+.panier:hover {
+  border-color: rgb(138, 137, 137);
+}
+
+.filter {
+  filter: invert(57%) sepia(9%) saturate(21%) hue-rotate(349deg) brightness(93%) contrast(92%);
 }
 
 .nb {
-  font-size: 11px !important;
+  background-color: white !important;
+  border: 1px solid rgb(138, 137, 137) !important;
+  color: rgb(138, 137, 137)
 }
 
 .submit {
@@ -68,4 +81,8 @@ h1.display-6 {
 
 .text {
   margin-right: 37%;
+}
+
+.bi {
+  fill:rgb(138, 137, 137)
 }
