@@ -1,7 +1,5 @@
 <?php
 
-    session_start();
-
     function sumQtt()
     {
         $qtt=0;
