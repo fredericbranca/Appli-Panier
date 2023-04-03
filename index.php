@@ -59,7 +59,7 @@ require "functions.php";
 
         <div class="container flex-column d-flex align-items-center">
 
-            <h1 class="display-4 text-black text-center p-2">Ajouter un produit</h1>
+            <h1 class="display-4 text-black text-center mb-4">Ajouter un produit</h1>
             <form action="Traitement.php?action=add" method="post" enctype="multipart/form-data">
 
                 <div class="input-group mb-3">

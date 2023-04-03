@@ -77,35 +77,42 @@ require "functions.php";
                         '</div>', //fermeture 1ere div container
                         '<div class="container align-items-center">',
                             '<div class="table-responsive">',
-                                '<table  class="table table-bordered table-hover shadow-sm text-nowrap">',
+                                '<table  class="table table-hover shadow text-nowrap">',
                                     "<thead>",
                                         "<tr>",
-                                            "<th>#</th>",
-                                            "<th>Nom</th>",
-                                            "<th>Prix</th>",
-                                            "<th>Quantité</th>",
-                                            "<th>Total</th>",
-                                            "<th></th>",
+                                            '<th scope="col">#</th>',
+                                            '<th scope="col">Nom</th>',
+                                            '<th scope="col">Prix</th>',
+                                            '<th scope="col" class="cell1"> Quantité</th>',
+                                            '<th scope="col class="cell"></th>',
+                                            '<th scope="col class="cellvide"></th>',
+                                            '<th scope="col">Total</th>',
+                                            '<th scope="col"></th>',
                                         "</tr>",
                                     "</thead>",
-                                    "<tbody>";
+                                    '<tbody class="table-group-divider">';
 
                 $totalGeneral = 0;
+                $n = 0;
 
                 foreach ($_SESSION['products'] as $key => $produit) {
+                    $n++;
                     $total = $produit['price'] * $produit['qtt'];
                     echo    "<tr>",
-                                "<td>" . ($key + 1) . "</td>",
+                                "<th scope='row'> $n </th>",
                                 "<td>
                                     <button type='button' class='btn btn-outline-dark py-0' data-bs-toggle='modal' data-bs-target='#exampleModal$key'>" . $_SESSION['products'][$key]['name'] . "</button>",
                                 "</td>",
                                 "<td>" . number_format($produit['price'], 2, ",", "&nbsp;") . "&nbsp;€</td>",
-                                "<td>" . $produit['qtt'] . "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                    <a href='Traitement.php?action=up-qtt&id=$key'><i class='fa-sharp fa-solid fa-plus'></i></a>&nbsp&nbsp
-                                    <a href='Traitement.php?action=down-qtt&id=$key'><i class='fa-sharp fa-solid fa-minus'></i></a>",
+                                '<td class="cell1">' . $produit['qtt'] . "</td>",
+                                '<td class="cell">',
+                                    "<a href='Traitement.php?action=up-qtt&id=$key'><i class='fa-sharp fa-solid fa-plus pe-2'></i></a>",
+                                    "<a href='Traitement.php?action=down-qtt&id=$key'><i class='fa-sharp fa-solid fa-minus'></i></a>",
+                                "</td>",
+                                '<td class="cellvide"></td>',
                                 "</td>",
                                 "<td>" . number_format($total, 2, ",", "&nbsp;") . "&nbsp;€</td>",
-                                "<td>
+                                "<td class='text-center'>
                                     <a href='Traitement.php?action=delete&id=$key'><i class='fa-sharp fa-solid fa-square-xmark'></i></a>
                                 </td>
                             </tr>";
@@ -114,9 +121,9 @@ require "functions.php";
                 }
 
                 echo                "<tr>",
-                                        "<td colspan=4>Total général : </td>",
+                                        "<td colspan=6>Total général : </td>",
                                         "<td><strong>" . number_format($totalGeneral, 2, ",", "&nbsp;") . "&nbsp;€</strong></td>",
-                                        "<td><a href='Traitement.php?action=clear'><i class='fa-sharp fa-solid fa-square-xmark'></i></a></td>",
+                                        "<td class='text-center'><a href='Traitement.php?action=clear'><i class='fa-sharp fa-solid fa-square-xmark'></i></a></td>",
                                     "</tr>",
                                 "</tbody>",
                             "</table>",
@@ -142,9 +149,6 @@ require "functions.php";
                                         "</div>",
                                         "<div class='modal-body'>",
                                             "<p>" . $_SESSION['products'][$key]['description'] . "</p>",
-                                        "</div>",
-                                        "<div class='modal-footer'>",
-                                            "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>",
                                         "</div>",
                                     "</div>",
                                 "</div>",

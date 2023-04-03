@@ -15,6 +15,18 @@ body {
   background-position: left;
 }
 
+.cell {
+  width: 1% !important;
+}
+
+.cell1 {
+  width: 10% !important;
+}
+
+.cellvide {
+  width: 10%;
+}
+
 .container {
   padding-top: 3% !important;
 }
