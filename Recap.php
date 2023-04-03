@@ -20,7 +20,7 @@ require "functions.php";
 
     <!-- Navbar -->
 
-    <nav class="navbar navbar-expand-sm bg-l-light">
+    <nav class="navbar navbar-expand-sm shadow-sm bg-l-light">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -77,7 +77,7 @@ require "functions.php";
                         '</div>', //fermeture 1ere div container
                         '<div class="container align-items-center">',
                             '<div class="table-responsive">',
-                                '<table  class="table table-bordered table-hover shadow-sm">',
+                                '<table  class="table table-bordered table-hover shadow-sm text-nowrap">',
                                     "<thead>",
                                         "<tr>",
                                             "<th>#</th>",

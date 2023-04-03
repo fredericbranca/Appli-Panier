@@ -19,7 +19,7 @@ require "functions.php";
 
     <!-- Navbar -->
 
-    <nav class="navbar navbar-expand-sm bg-l-light">
+    <nav class="navbar navbar-expand-sm shadow-sm bg-l-light">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
