@@ -1,4 +1,5 @@
 <?php
+    session_start();
 
 require 'functions.php';
 
@@ -158,13 +159,6 @@ if (isset($_GET['action'])) {
             die();
             break;
 
-        // case "detail":
-        //     $product = $_SESSION['products'][$_GET['id']];
-        //     $_SESSION['Message'] =  "";
-        //     // redirection
-        //     header("Location: Recap.php");
-        //     die();
-        //     break;
     }
 }
 
