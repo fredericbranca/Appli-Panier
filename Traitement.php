@@ -97,68 +97,104 @@ if (isset($_GET['action'])) {
             // SUPPRIMER UN PRODUIT //
         case "delete":
 
-            // supprime le produit assoscié à l'id qui lui est attribué grâce à la method GET de l'URL
-            $deletedProduct = $_SESSION['products'][$_GET['id']]['name'];
-            unlink("fichierImg/" . $_SESSION['products'][$_GET['id']]['file']);
-            unset($_SESSION['products'][$_GET['id']]);
-            // mise en forme pour l'affichage : afficher le message de suppression du produit
-            if (!empty($_SESSION['products'])) {
-                $_SESSION['Message'] = "<div class='alert alert-success' role='alert'>Le produit $deletedProduct a été supprimé !</div>";
-            } else {
-                $_SESSION['Message'] = "<div class='alert alert-success vide' role='alert'>Le produit $deletedProduct a été supprimé !</div>
-                                        <div class='alert alert-warning' role='alert'>Le panier a été vidé...</div>";
-            }
+            // Verifie si "id" est défini dans l'URL et si le produit existe
+            if(isset($_GET["id"]) && isset($_SESSION["products"][$_GET["id"]])){
 
-            //redirection
-            header('Location: Recap.php');
-            die();
-            break;
+                // supprime le produit assoscié à l'id qui lui est attribué grâce à la method GET de l'URL
+                $deletedProduct = $_SESSION['products'][$_GET['id']]['name'];
+                unlink("fichierImg/" . $_SESSION['products'][$_GET['id']]['file']);
+                unset($_SESSION['products'][$_GET['id']]);
+                // mise en forme pour l'affichage : afficher le message de suppression du produit
+                if (!empty($_SESSION['products'])) {
+                    $_SESSION['Message'] = "<div class='alert alert-success' role='alert'>Le produit $deletedProduct a été supprimé !</div>";
+                } else {
+                    $_SESSION['Message'] = "<div class='alert alert-success vide' role='alert'>Le produit $deletedProduct a été supprimé !</div>
+                                            <div class='alert alert-warning' role='alert'>Le panier a été vidé...</div>";
+                }
+
+                //redirection
+                header('Location: Recap.php');
+                die();
+                break;
+            }
+            else{
+                $_SESSION['Message'] = "<div class='alert alert-danger' role='alert'>Cette fonctionnalité n'est pas encore accessible !</div>";
+
+                //redirection
+                header('Location: Recap.php');
+                die();
+                break;
+            }
 
             // AUGMENTER LA QUANTITE D'UN PRODUIT //
         case "up-qtt":
 
-            // augmente la quantité d'un produit de 1 si < 1000
-            if ($_SESSION['products'][$_GET['id']]['qtt'] < 1000){
-                $_SESSION['products'][$_GET['id']]['qtt']++;
+            // Verifie si "id" est défini dans l'URL et si le produit existe
+            if(isset($_GET["id"]) && isset($_SESSION["products"][$_GET["id"]])){
+
+                // augmente la quantité d'un produit de 1 si < 1000
+                if ($_SESSION['products'][$_GET['id']]['qtt'] < 1000){
+                    $_SESSION['products'][$_GET['id']]['qtt']++;
+                }
+                else{
+                    $_SESSION['Message'] = "<div class='alert alert-danger'>Action impossible : Vous avez déjà atteint la quantité maximale !</div>";
+                }
+
+                // redirection
+                header('Location: Recap.php');
+                die();
+                break;
             }
             else{
-                $_SESSION['Message'] = "<div class='alert alert-danger'>Action impossible : Vous avez déjà atteint la quantité maximale !</div>";
+                $_SESSION['Message'] = "<div class='alert alert-danger' role='alert'>Cette fonctionnalité n'est pas encore accessible !</div>";
+               
+                //redirection
+                header('Location: Recap.php');
+                die();
+                break;
             }
-
-            // redirection
-            header('Location: Recap.php');
-            die();
-            break;
 
             // DIMINUER LA QUANTITE D'UN PRODUIT //
         case "down-qtt":
 
-            $deletedProduct = $_SESSION['products'][$_GET['id']]['name'];
+            // Verifie si "id" est défini dans l'URL et si le produit existe
+            if(isset($_GET["id"]) && isset($_SESSION["products"][$_GET["id"]])){
 
-            // diminue la quantité d'un produit de 1
-            $_SESSION['products'][$_GET['id']]['qtt']--;
+                $deletedProduct = $_SESSION['products'][$_GET['id']]['name'];
 
-            // si la quantité passe à 0 
-            if ($_SESSION['products'][$_GET['id']]['qtt'] == 0) {
+                // diminue la quantité d'un produit de 1
+                $_SESSION['products'][$_GET['id']]['qtt']--;
 
-                // supprime le produit assoscié à l'id qui lui est attribué
-                unlink("fichierImg/" . $_SESSION['products'][$_GET['id']]['file']);
-                unset($_SESSION['products'][$_GET['id']]);
+                // si la quantité passe à 0 
+                if ($_SESSION['products'][$_GET['id']]['qtt'] == 0) {
 
-                if (!empty($_SESSION['products'])) {
-                    // affiche le message de suppression du produit s'il y a encore des produits dans le panier
-                    $_SESSION['Message'] = "<div class='alert alert-warning'>Le produit $deletedProduct a été supprimé !</div>";
-                } else {
-                    // affiche le message de suppression du produit et que le panier est vide
-                    $_SESSION['Message'] = "<div class='alert alert-warning vide' role='alert'>Le produit $deletedProduct a été supprimé !</div>
-                                            <div class='alert alert-warning' role='alert'>Le panier a été vidé...</div>";
+                    // supprime le produit assoscié à l'id qui lui est attribué
+                    unlink("fichierImg/" . $_SESSION['products'][$_GET['id']]['file']);
+                    unset($_SESSION['products'][$_GET['id']]);
+
+                    if (!empty($_SESSION['products'])) {
+                        // affiche le message de suppression du produit s'il y a encore des produits dans le panier
+                        $_SESSION['Message'] = "<div class='alert alert-warning'>Le produit $deletedProduct a été supprimé !</div>";
+                    } else {
+                        // affiche le message de suppression du produit et que le panier est vide
+                        $_SESSION['Message'] = "<div class='alert alert-warning vide' role='alert'>Le produit $deletedProduct a été supprimé !</div>
+                                                <div class='alert alert-warning' role='alert'>Le panier a été vidé...</div>";
+                    }
                 }
+                // redirection
+                header("Location: Recap.php");
+                die();
+                break;
             }
-            // redirection
-            header("Location: Recap.php");
-            die();
-            break;
-
+            else
+            {
+                $_SESSION['Message'] = "<div class='alert alert-danger' role='alert'>Cette fonctionnalité n'est pas encore accessible !</div>";
+                
+                //redirection
+                header('Location: Recap.php');
+                die();
+                break;
+            }
     }
 }
 
