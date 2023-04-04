@@ -40,7 +40,7 @@ $recap = (isset($recap)) ? $recap : "";
                                 <a class="nav-link <?= $accueil ?>" aria-current="page" href="index.php">Accueil</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?= $recap ?>" href="Recap.php">Récaputitulatif</a>
+                                <a class="nav-link <?= $recap ?>" href="Recap.php">Récapitulatif</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ps-0 mt-2 pos">
