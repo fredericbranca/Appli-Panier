@@ -57,13 +57,13 @@ ob_start()
                                     "<td>" . number_format($produit['price'], 2, ",", "&nbsp;") . "&nbsp;€</td>",
                                     '<td class="cell1">' . $produit['qtt'] . "</td>",
                                     '<td class="cell">',
-                                        "<a href='Traitement.php?action=up-qtt&id=$key'><i class='fa-sharp fa-solid fa-plus pe-2'></i></a>",
-                                        "<a href='Traitement.php?action=down-qtt&id=$key'><i class='fa-sharp fa-solid fa-minus'></i></a>",
+                                        "<a href='Traitement.php?action=up-qtt&id=$key'><i class='fa-sharp fa-solid fa-plus pe-2 text-secondary'></i></a>",
+                                        "<a href='Traitement.php?action=down-qtt&id=$key'><i class='fa-sharp fa-solid fa-minus text-secondary'></i></a>",
                                     "</td>",
                                     '<td class="cellvide"></td>',
                                     "<td>" . number_format($total, 2, ",", "&nbsp;") . "&nbsp;€</td>",
                                     "<td class='text-center'>",
-                                        "<a href='Traitement.php?action=delete&id=$key'><i class='fa-sharp fa-solid fa-square-xmark'></i></a>",
+                                        "<a href='Traitement.php?action=delete&id=$key'><i class='fa-sharp fa-solid fa-square-xmark text-secondary'></i></a>",
                                     "</td>",
                                 "</tr>";
 
@@ -71,9 +71,9 @@ ob_start()
                     }
 
                     echo                "<tr>",
-                                            "<td colspan=6>Total général : </td>",
+                                            "<th scope='row' colspan=6>Total général : </th>",
                                             "<td><strong>" . number_format($totalGeneral, 2, ",", "&nbsp;") . "&nbsp;€</strong></td>",
-                                            "<td class='text-center'><a href='Traitement.php?action=clear'><i class='fa-sharp fa-solid fa-square-xmark'></i></a></td>",
+                                            "<td class='text-center'><a href='Traitement.php?action=clear'><i class='fa-sharp fa-solid fa-square-xmark text-dark'></i></a></td>",
                                         "</tr>",
                                     "</tbody>",
                                 "</table>",
